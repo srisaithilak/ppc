@@ -1,7 +1,9 @@
 package geeksforgeeks;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.Set;
 
 public class Factors {
 	
@@ -75,6 +77,39 @@ public class Factors {
 			primeFactorMap.put(number, 1);
 		}
 		return primeFactorMap;
+	}
+	
+	public static void printGcd(Integer a, Integer b) {
+		LinkedHashMap<Integer, Integer> primeFactorMapA = getPrimeFactors(a);
+		LinkedHashMap<Integer, Integer> primeFactorMapB = getPrimeFactors(b);
+		LinkedHashMap<Integer, Integer> primeFactorMapIntersection = getIntersectionLinkedHashMap(primeFactorMapA,primeFactorMapB);
+		Integer gcd = buildNumberFromPrimeFactorMap(primeFactorMapIntersection);
+		System.out.println("GCD of "+a+" and "+b+" is "+gcd);
+	}
+	
+	private static Integer buildNumberFromPrimeFactorMap(LinkedHashMap<Integer, Integer> primeFactorMapIntersection) {
+		Integer response = 1;
+		Set<Integer> keySet = primeFactorMapIntersection.keySet();
+		Iterator<Integer> ite = keySet.iterator();
+		while(ite.hasNext()) {
+			Integer key = ite.next();
+			response = (int) (response * Math.pow(key, primeFactorMapIntersection.get(key)));
+		}
+		return response;
+	}
+	
+	private static LinkedHashMap<Integer, Integer> getIntersectionLinkedHashMap(LinkedHashMap<Integer, Integer> primeFactorMapA, LinkedHashMap<Integer, Integer> primeFactorMapB){
+		LinkedHashMap<Integer, Integer> response = new LinkedHashMap<Integer, Integer>();
+		Set<Integer> keySetA = primeFactorMapA.keySet();
+		Set<Integer> keySetB = primeFactorMapB.keySet();
+		Iterator<Integer> iteA = keySetA.iterator();
+		while(iteA.hasNext()) {
+			Integer key = iteA.next();
+			if(keySetB.contains(key)) {
+				response.put(key, Math.min(primeFactorMapA.get(key), primeFactorMapB.get(key)));
+			}
+		}
+		return response;
 	}
 
 }

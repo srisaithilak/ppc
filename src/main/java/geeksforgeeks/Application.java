@@ -27,7 +27,7 @@ public class Application {
 		
 		//System.out.println(Factors.getPrimeFactors(135));
 		
-		
+		//Factors.printGcd(729, 81);
 
 	}
 
