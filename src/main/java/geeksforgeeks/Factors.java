@@ -111,5 +111,28 @@ public class Factors {
 		}
 		return response;
 	}
+	
+	public static void printLcm(Integer a, Integer b) {
+		LinkedHashMap<Integer, Integer> primeFactorMapA = getPrimeFactors(a);
+		LinkedHashMap<Integer, Integer> primeFactorMapB = getPrimeFactors(b);
+		LinkedHashMap<Integer, Integer> primeFactorMapUnion = getUnionLinkedHashMap(primeFactorMapA,primeFactorMapB);
+		System.out.println("LCM map: "+primeFactorMapUnion);
+		Integer lcm = buildNumberFromPrimeFactorMap(primeFactorMapUnion);
+		System.out.println("LCM of "+a+" and "+b+" is "+lcm);
+	}
 
+	private static LinkedHashMap<Integer, Integer> getUnionLinkedHashMap(LinkedHashMap<Integer, Integer> primeFactorMapA, LinkedHashMap<Integer, Integer> primeFactorMapB){
+		LinkedHashMap<Integer, Integer> response = new LinkedHashMap<Integer, Integer>(primeFactorMapA);
+		Set<Integer> keySetB = primeFactorMapB.keySet();
+		Iterator<Integer> iteB = keySetB.iterator();
+		while(iteB.hasNext()) {
+			Integer key = iteB.next();
+			if(response.containsKey(key)) {
+				response.put(key, Math.max(response.get(key), primeFactorMapB.get(key)));
+			}else {
+				response.put(key, primeFactorMapB.get(key));
+			}
+		}
+		return response;
+	}
 }
