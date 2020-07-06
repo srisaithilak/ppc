@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class Factors {
 	
@@ -115,14 +116,25 @@ public class Factors {
 	public static void printLcm(Integer a, Integer b) {
 		LinkedHashMap<Integer, Integer> primeFactorMapA = getPrimeFactors(a);
 		LinkedHashMap<Integer, Integer> primeFactorMapB = getPrimeFactors(b);
-		LinkedHashMap<Integer, Integer> primeFactorMapUnion = getUnionLinkedHashMap(primeFactorMapA,primeFactorMapB);
+		TreeMap<Integer, Integer> primeFactorMapUnion = getUnionTreeMap(primeFactorMapA,primeFactorMapB);
 		System.out.println("LCM map: "+primeFactorMapUnion);
 		Integer lcm = buildNumberFromPrimeFactorMap(primeFactorMapUnion);
 		System.out.println("LCM of "+a+" and "+b+" is "+lcm);
 	}
 
-	private static LinkedHashMap<Integer, Integer> getUnionLinkedHashMap(LinkedHashMap<Integer, Integer> primeFactorMapA, LinkedHashMap<Integer, Integer> primeFactorMapB){
-		LinkedHashMap<Integer, Integer> response = new LinkedHashMap<Integer, Integer>(primeFactorMapA);
+	private static Integer buildNumberFromPrimeFactorMap(TreeMap<Integer, Integer> primeFactorMapUnion) {
+		Integer response = 1;
+		Set<Integer> keySet = primeFactorMapUnion.keySet();
+		Iterator<Integer> ite = keySet.iterator();
+		while(ite.hasNext()) {
+			Integer key = ite.next();
+			response = (int) (response * Math.pow(key, primeFactorMapUnion.get(key)));
+		}
+		return response;
+	}
+
+	private static TreeMap<Integer, Integer> getUnionTreeMap(LinkedHashMap<Integer, Integer> primeFactorMapA, LinkedHashMap<Integer, Integer> primeFactorMapB){
+		TreeMap<Integer, Integer> response = new TreeMap<Integer, Integer>(primeFactorMapA);
 		Set<Integer> keySetB = primeFactorMapB.keySet();
 		Iterator<Integer> iteB = keySetB.iterator();
 		while(iteB.hasNext()) {
@@ -134,5 +146,41 @@ public class Factors {
 			}
 		}
 		return response;
+	}
+	
+	public static Integer gcd2(Integer a, Integer b) {
+		if(a==0) {
+			return b;
+		}else if(b==0) {
+			return a;
+		}else {
+			return gcd2(b,a%b);
+		}
+	}
+	
+	public static Integer lcm2(Integer a, Integer b) {
+		return a*b/gcd2(a,b);
+	}
+	
+	public static Integer numZeroesinFactorial(Integer number) {
+		Integer divisor = 5;
+		Integer numZeroes = 0;
+		while(divisor<=number) {
+			numZeroes += number/divisor;
+			divisor *= 5;
+		}
+		return numZeroes;
+	}
+	
+	public static void printFactorial(Integer number) {
+		System.out.println("Factorial of "+number+" is "+getFactorial((long) number));
+	}
+	
+	private static Long getFactorial(Long number) {
+		if(number==1) {
+			return (long) 1;
+		}else {
+			return number*getFactorial(number-1);
+		}
 	}
 }

@@ -29,7 +29,15 @@ public class Application {
 		
 		//Factors.printGcd(729, 81);
 		
-		Factors.printLcm(81, 16);
+		//Factors.printLcm(81, 16);
+		
+		//System.out.println(Factors.gcd2(1024, 2));
+		
+		//System.out.println(Factors.lcm2(81, 16));
+		
+		Factors.printFactorial(20);
+		
+		System.out.println(Factors.numZeroesinFactorial(20));		
 
 	}
 
