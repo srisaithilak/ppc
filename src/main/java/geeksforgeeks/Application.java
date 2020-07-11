@@ -3,6 +3,30 @@ package geeksforgeeks;
 public class Application {
 
 	public static void main(String[] args) {
+
+		ArrayHelper.printMaxSum(new int[] { 100, 200, 300, 400 }, 2);
+
+		ArrayHelper.printMaxSum(new int[] { 1, 4, 2, 10, 23, 3, 1, 0, 20 }, 4);
+		ArrayHelper.printMaxSum(new int[] { 2, 3 }, 1);
+		ArrayHelper.printMaxSum(new int[] { 2, 3 }, 3);
+
+		// ArrayHelper.printLeftRotatedArray(new int[]{1,2,3,4,5,6}, 6);
+
+		/*
+		 * //instance of value holder with value set to 1 ValueHolder sampleValue = new
+		 * ValueHolder(1);
+		 * 
+		 * //original array ValueHolder originalArray[] = { sampleValue };
+		 * 
+		 * //cloned array ValueHolder clonedArray[] = originalArray.clone();
+		 * 
+		 * //now modifying the original array's object originalArray[0].value = 10;
+		 * 
+		 * //printing the value now show modified value because clonedArray is not
+		 * deep-copied, reference to original object is copied (shallow copy)
+		 * System.out.println(clonedArray[0]);
+		 */
+
 		// PrimeNumbers.printPrimes(10000);
 
 		/*
@@ -24,20 +48,40 @@ public class Application {
 		 * Factors.printPrimeFactors(1024); Factors.printPrimeFactors(135);
 		 * Factors.printPrimeFactors(75); Factors.printPrimeFactors(82);
 		 */
-		
-		//System.out.println(Factors.getPrimeFactors(135));
-		
-		//Factors.printGcd(729, 81);
-		
-		//Factors.printLcm(81, 16);
-		
-		//System.out.println(Factors.gcd2(1024, 2));
-		
-		//System.out.println(Factors.lcm2(81, 16));
-		
-		Factors.printFactorial(20);
-		
-		System.out.println(Factors.numZeroesinFactorial(20));		
+
+		// System.out.println(Factors.getPrimeFactors(135));
+
+		// Factors.printGcd(729, 81);
+
+		// Factors.printLcm(81, 16);
+
+		// System.out.println(Factors.gcd2(1024, 2));
+
+		// System.out.println(Factors.lcm2(81, 16));
+
+		// Factors.printFactorial(20);
+
+		// System.out.println(Factors.numZeroesinFactorial(20));
+
+		/*
+		 * ArrayList<Integer> a = new ArrayList<Integer>(); a.add(0); a.add(0);
+		 * a.add(0); a.add(1); a.add(2); ArrayList<Integer> b = new
+		 * ArrayList<Integer>(); b.add(2); b.add(1); b.add(0); b.add(0); b.add(0);
+		 * Modular.printRequiredValue(a, b, 10);
+		 */
+
+		/*
+		 * KnuthMorrisPratt.subStringSearch("ababcababdababe", "ababd");
+		 * System.out.println(KnuthMorrisPratt.subStringSearch("ababcabcabababd",
+		 * "ababd")); KnuthMorrisPratt.subStringSearch("hello", "abcdeabfabc");
+		 * KnuthMorrisPratt.subStringSearch("hello", "aabcadaabe");
+		 * KnuthMorrisPratt.subStringSearch("hello", "aaaabaacd");
+		 * KnuthMorrisPratt.subStringSearch("hello", "abcdabcdeabbcd");
+		 * KnuthMorrisPratt.printPiTable("abcdeabfabc");
+		 * KnuthMorrisPratt.printPiTable("aabcadaabe");
+		 * KnuthMorrisPratt.printPiTable("aaaabaacd");
+		 * KnuthMorrisPratt.printPiTable("abcdabcdeabbcd");
+		 */
 
 	}
 
