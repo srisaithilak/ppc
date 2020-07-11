@@ -1,14 +1,34 @@
 package geeksforgeeks;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Vector;
+
 public class Application {
 
 	public static void main(String[] args) {
-
-		ArrayHelper.printMaxSum(new int[] { 100, 200, 300, 400 }, 2);
-
-		ArrayHelper.printMaxSum(new int[] { 1, 4, 2, 10, 23, 3, 1, 0, 20 }, 4);
-		ArrayHelper.printMaxSum(new int[] { 2, 3 }, 1);
-		ArrayHelper.printMaxSum(new int[] { 2, 3 }, 3);
+		
+		LinkedList<DoubleValueHolder> operations = new LinkedList<DoubleValueHolder>();
+		operations.add(new DoubleValueHolder(2, 4));
+		operations.add(new DoubleValueHolder(1, 3));
+		operations.add(new DoubleValueHolder(1, 2));
+		ArrayHelper.printMaxPrefix(5, operations);
+		
+		DoubleValueHolder[] sample = new DoubleValueHolder[2];
+		DoubleValueHolder[] newSample = operations.toArray(sample);
+		System.out.println(Arrays.toString(sample));
+		System.out.println(Arrays.toString(newSample));
+		System.out.println(sample==newSample);
+		
+		Vector<Integer> vecSample = new Vector<Integer>();
+		vecSample.add(2);
+		/*
+		 * ArrayHelper.printMaxSum(new int[] { 100, 200, 300, 400 }, 2);
+		 * 
+		 * ArrayHelper.printMaxSum(new int[] { 1, 4, 2, 10, 23, 3, 1, 0, 20 }, 4);
+		 * ArrayHelper.printMaxSum(new int[] { 2, 3 }, 1); ArrayHelper.printMaxSum(new
+		 * int[] { 2, 3 }, 3);
+		 */
 
 		// ArrayHelper.printLeftRotatedArray(new int[]{1,2,3,4,5,6}, 6);
 

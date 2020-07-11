@@ -1,6 +1,8 @@
 package geeksforgeeks;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class ArrayHelper {
 	
@@ -40,6 +42,26 @@ public class ArrayHelper {
 			}
 			System.out.println("Max sum: "+maxSum);
 		}
+	}
+	
+	public static void printMaxPrefix(int number, LinkedList<DoubleValueHolder> operations) {
+		int[] arr = new int[number];
+		Iterator<DoubleValueHolder> ite = operations.iterator();
+		while(ite.hasNext()) {
+			DoubleValueHolder temp = ite.next();
+			arr[temp.from - 1]=arr[temp.from - 1]+100;
+			if(temp.to!=number) {
+				arr[temp.to]=arr[temp.to]-100;
+			}
+		}
+		Integer maxVal = arr[0];
+		for(int i=1;i<number;i++) {
+			arr[i]=arr[i]+arr[i-1];
+			if(arr[i]>maxVal) {
+				maxVal=arr[i];
+			}
+		}
+		System.out.println(Arrays.toString(arr)+" with max value "+maxVal);
 	}
 
 }
